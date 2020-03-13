@@ -4,7 +4,7 @@ var dt = require('./mymodule1');
 
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Hello World!');
+  res.write('Hello World!\n');
   res.write('Now is: ' + dt.myDateTime());
   res.write(req.url);
   res.end();
