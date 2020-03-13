@@ -15,7 +15,7 @@ http.createServer(function (req, res) {
 
   res.write(q.a + " " + q.b);
 
-  console.log('Answering: ' + q.a + " " + q.b);
+  console.log('Answering: ' + q.a + " " + q.b) + " to " + req.ip;
 
   res.end();
 }).listen(3000);
