@@ -24,10 +24,10 @@ fs.readFile('my.html', function(err, data) {
   console.log('reading file: ' + data)
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(data);
+  
+  res.write('Hello World!\n');
   res.end();
 
-  res.write('Hello World!\n');
-  
 });
 
   
