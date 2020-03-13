@@ -7,6 +7,7 @@ http.createServer(function (req, res) {
   res.write('Hello World!\n');
   res.write('Now is: ' + dt.myDateTime());
   res.write(req.url);
+  res.write(req.ip);
   res.end();
 }).listen(3000);
 
