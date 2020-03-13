@@ -1,13 +1,22 @@
 var http = require('http');
+var url = require('url');
 
 var dt = require('./mymodule1');
+
+
+
 
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.write('Hello World!\n');
-  res.write('Now is: ' + dt.myDateTime());
-  res.write(req.url);
-  res.write(req.ip);
+  res.write('Now is: ' + dt.myDateTime() + "\n");
+  var q = url.parse(req.url, true).query;
+
+
+  res.write(q.a + " " + q.b);
+
+  console.log('Answering: ' + q.a + " " + q.b);
+
   res.end();
 }).listen(3000);
 
