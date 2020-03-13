@@ -1,5 +1,7 @@
 var http = require('http');
 var url = require('url');
+var fs = require("fs");
+
 
 var dt = require('./mymodule1');
 
@@ -7,7 +9,7 @@ var dt = require('./mymodule1');
 
 
 http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
+  /*res.writeHead(200, {'Content-Type': 'text/html'});
   res.write('Hello World!\n');
   res.write('Now is: ' + dt.myDateTime() + "\n");
   var q = url.parse(req.url, true).query;
@@ -15,9 +17,15 @@ http.createServer(function (req, res) {
 
   res.write(q.a + " " + q.b);
 
-  console.log('Answering: ' + q.a + " " + q.b) + " to " + req.ip;
-
+  console.log('Answering: ' + q.a + " " + q.b + " to " + req.connection.remoteAddress);
+*/
+fs.readFile('./my.html', function(err, data) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(data);
   res.end();
+});
+
+  
 }).listen(3000);
 
 console.log(`Server running...`);
