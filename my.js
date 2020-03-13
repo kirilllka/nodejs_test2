@@ -26,10 +26,11 @@ fs.readFile('my.html', function(err, data) {
   res.write(data);
   
   res.write('Hello World!\n');
-  res.end();
-
+  
 });
+res.write('Hello World!\n');
 
+res.end();
   
 }).listen(3000);
 
