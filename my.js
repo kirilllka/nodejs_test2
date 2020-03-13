@@ -19,7 +19,7 @@ http.createServer(function (req, res) {
 
   console.log('Answering: ' + q.a + " " + q.b + " to " + req.connection.remoteAddress);
 
-fs.readFile('./my.html', function(err, data) {
+fs.readFile('my.html', function(err, data) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(data);
   res.end();
