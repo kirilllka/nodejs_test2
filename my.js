@@ -9,6 +9,7 @@ var dt = require('./mymodule1');
 
 
 http.createServer(function (req, res) {
+ /* 
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write('Hello World!\n');
   res.write('Now is: ' + dt.myDateTime() + "\n");
@@ -18,7 +19,7 @@ http.createServer(function (req, res) {
   res.write(q.a + " " + q.b);
 
   console.log('Answering: ' + q.a + " " + q.b + " to " + req.connection.remoteAddress);
-
+*/
 fs.readFile('my.html', function(err, data) {
   console.log('reading file: ' + data)
   res.writeHead(200, {'Content-Type': 'text/html'});
