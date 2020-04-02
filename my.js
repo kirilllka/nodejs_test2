@@ -1,36 +1,42 @@
 var http = require('http');
 var url = require('url');
 var fs = require("fs");
+var redis = require('redis');
+var redisclient = redis.createClient(); //creates a new client
 
 
 var dt = require('./mymodule1');
 
-
+redisclient.on('connect', function() {
+  console.log('redis connected');
+});
 
 
 http.createServer(function (req, res) {
- /* 
+  
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write('Hello World!\n');
   res.write('Now is: ' + dt.myDateTime() + "\n");
   var q = url.parse(req.url, true).query;
 
-
-  res.write(q.a + " " + q.b);
-
-  console.log('Answering: ' + q.a + " " + q.b + " to " + req.connection.remoteAddress);
-*/
-fs.readFile('my.html', function(err, data) {
-  console.log('reading file: ' + data)
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(data);
   
+   
+  res.write(q.a + " " + q.b);
+  
+  res.end();
+  console.log('Answering: ' + q.a + " " + q.b + " to " + req.connection.remoteAddress);
+  /*
+  fs.readFile('my.html', function(err, data) {
+    console.log('reading file: ' + data)
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    
   res.write('Hello World!\n');
   
 });
 res.write('Hello World!\n');
 
-res.end();
+res.end();*/
   
 }).listen(3000);
 
